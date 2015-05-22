@@ -8,7 +8,7 @@
  * @author Remco Tolsma
  * @version 1.0
  */
-class Pronamic_AppThemes_IDeal_AddOn {
+class Pronamic_WP_Pay_Extensions_AppThemes_Extension {
 	/**
 	 * Slug
 	 *
@@ -34,7 +34,7 @@ class Pronamic_AppThemes_IDeal_AddOn {
 	 */
 	public static function load_gateway() {
 		if ( function_exists( 'appthemes_register_gateway' ) ) {
-			appthemes_register_gateway( 'Pronamic_AppThemes_IDeal_IDealGateway' );
+			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_IDealGateway' );
 
 			add_action( 'pronamic_payment_status_update_' . self::SLUG, array( __CLASS__, 'status_update' ), 10, 2 );
 			add_filter( 'pronamic_payment_source_text_' . self::SLUG,   array( __CLASS__, 'source_text' ), 10, 2 );
@@ -63,7 +63,7 @@ class Pronamic_AppThemes_IDeal_AddOn {
 
 			$order = appthemes_get_order( $id );
 
-			$data = new Pronamic_WP_Pay_AppThemes_PaymentData( $order );
+			$data = new Pronamic_WP_Pay_Extensions_AppThemes_PaymentData( $order );
 
 			$url = $data->get_normal_return_url();
 

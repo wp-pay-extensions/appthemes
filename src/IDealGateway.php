@@ -8,7 +8,7 @@
  * @author Remco Tolsma
  * @version 1.0
  */
-class Pronamic_AppThemes_IDeal_IDealGateway extends APP_Gateway {
+class Pronamic_WP_Pay_Extensions_AppThemes_IDealGateway extends APP_Gateway {
 	/**
 	 * Constructs and initialize the iDEAL gateway for AppThemes
 	 */
@@ -55,7 +55,7 @@ class Pronamic_AppThemes_IDeal_IDealGateway extends APP_Gateway {
 			$gateway = Pronamic_WP_Pay_Plugin::get_gateway( $config_id );
 
 			if ( $gateway ) {
-				$data = new Pronamic_WP_Pay_AppThemes_PaymentData( $order );
+				$data = new Pronamic_WP_Pay_Extensions_AppThemes_PaymentData( $order );
 
 				if ( filter_has_var( INPUT_POST, 'appthemes_pronamic_ideal' ) ) {
 					$payment = Pronamic_WP_Pay_Plugin::start( $config_id, $gateway, $data );

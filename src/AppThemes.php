@@ -8,6 +8,6 @@
  * @author Remco Tolsma
  * @version 1.0
  */
-class Pronamic_AppThemes_AppThemes {
+class Pronamic_WP_Pay_Extensions_AppThemes_AppThemes {
 
 }
