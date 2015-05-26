@@ -7,7 +7,7 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 - 
 
-## 1.0.0 - 2015-05-23
+## 1.0.0 - 2015-05-26
 
 ### Added
 - First release.
