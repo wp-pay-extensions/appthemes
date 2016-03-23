@@ -3,10 +3,12 @@
 /**
  * Title: AppThemes iDEAL Add-On
  * Description:
- * Copyright: Copyright (c) 2005 - 2015
+ * Copyright: Copyright (c) 2005 - 2016
  * Company: Pronamic
+ *
  * @author Remco Tolsma
- * @version 1.0.0
+ * @version 1.0.1
+ * @since 1.0.0
  */
 class Pronamic_WP_Pay_Extensions_AppThemes_Extension {
 	/**
@@ -103,7 +105,7 @@ class Pronamic_WP_Pay_Extensions_AppThemes_Extension {
 			}
 
 			if ( $can_redirect ) {
-				wp_redirect( $url, 303 );
+				wp_redirect( $url );
 
 				exit;
 			}
