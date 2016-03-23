@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 - 
 
+## 1.0.1 - 2016-03-23
+- Removed status code from redirect in status_update.
+
 ## 1.0.0 - 2015-05-26
 
 ### Added
