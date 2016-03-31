@@ -109,21 +109,21 @@ class Pronamic_WP_Pay_Extensions_AppThemes_PaymentData extends Pronamic_WP_Pay_P
 		return get_the_author_meta( 'user_email', $author_id );
 	}
 
-	public function getCustomerName() {
+	public function get_customer_name() {
 		$author_id = $this->order->get_author();
 
 		return get_the_author_meta( 'first_name', $author_id ) . ' ' . get_the_author_meta( 'last_name', $author_id );
 	}
 
-	public function getOwnerAddress() {
+	public function get_address() {
 		return '';
 	}
 
-	public function getOwnerCity() {
+	public function get_city() {
 		return '';
 	}
 
-	public function getOwnerZip() {
+	public function get_zip() {
 		return '';
 	}
 
