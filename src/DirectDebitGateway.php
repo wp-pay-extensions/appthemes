@@ -7,8 +7,8 @@
  * Company: Pronamic
  *
  * @author Reüel van der Steege
- * @version unreleased
- * @since unreleased
+ * @version 1.0.3
+ * @since 1.0.3
  */
 class Pronamic_WP_Pay_Extensions_AppThemes_DirectDebitGateway extends Pronamic_WP_Pay_Extensions_AppThemes_Gateway {
 	/**
