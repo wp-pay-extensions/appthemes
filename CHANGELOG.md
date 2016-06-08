@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [1.0.4] - 2016-06-08
+- Fixed issue loading and processing new gateways.
+
 ## [1.0.3] - 2016-06-08
 - Added Bancontact gateway.
 - Added Bank Transfer gateway.
@@ -23,7 +26,8 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-05-26
 - First release.
 
-[unreleased]: https://github.com/wp-pay-extensions/appthemes/compare/1.0.3...HEAD
+[unreleased]: https://github.com/wp-pay-extensions/appthemes/compare/1.0.4...HEAD
+[1.0.4]: https://github.com/wp-pay-extensions/appthemes/compare/1.0.3...1.0.4
 [1.0.3]: https://github.com/wp-pay-extensions/appthemes/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/wp-pay-extensions/appthemes/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/wp-pay-extensions/appthemes/compare/1.0.0...1.0.1

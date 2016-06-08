@@ -7,7 +7,7 @@
  * Company: Pronamic
  *
  * @author Remco Tolsma
- * @version 1.0.1
+ * @version 1.0.4
  * @since 1.0.0
  */
 class Pronamic_WP_Pay_Extensions_AppThemes_Extension {
@@ -36,7 +36,13 @@ class Pronamic_WP_Pay_Extensions_AppThemes_Extension {
 	 */
 	public static function load_gateway() {
 		if ( function_exists( 'appthemes_register_gateway' ) ) {
+			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_Gateway' );
+			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_BancontactGateway' );
+			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_BankTransferGateway' );
+			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_CreditCardGateway' );
+			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_DirectDebitGateway' );
 			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_IDealGateway' );
+			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_SofortGateway' );
 
 			add_action( 'pronamic_payment_status_update_' . self::SLUG, array( __CLASS__, 'status_update' ), 10, 2 );
 			add_filter( 'pronamic_payment_source_text_' . self::SLUG,   array( __CLASS__, 'source_text' ), 10, 2 );
@@ -47,8 +53,22 @@ class Pronamic_WP_Pay_Extensions_AppThemes_Extension {
 	 * Maybe redirect
 	 */
 	public static function maybe_process_the_order() {
-		if ( filter_has_var( INPUT_POST, 'appthemes_pronamic_ideal' ) ) {
-			process_the_order();
+		$gateways = array(
+			'appthemes_pronamic_ideal',
+			'appthemes_pronamic_pay',
+			'appthemes_pronamic_pay_bancontact',
+			'appthemes_pronamic_pay_bank_transfer',
+			'appthemes_pronamic_pay_credit_card',
+			'appthemes_pronamic_pay_direct_debit',
+			'appthemes_pronamic_pay_sofort',
+		);
+
+		foreach ( $gateways as $gateway ) {
+			if ( filter_has_var( INPUT_POST, $gateway ) ) {
+				process_the_order();
+
+				break;
+			}
 		}
 	}
 
