@@ -26,8 +26,8 @@ class Pronamic_WP_Pay_Extensions_AppThemes_BancontactGateway extends Pronamic_WP
 		$this->payment_method = Pronamic_WP_Pay_PaymentMethods::MISTER_CASH;
 
 		parent::__construct( array(
-			'dropdown'  => __( 'Bancontact/Mister Cash', 'pronamic_ideal' ),
-			'admin'     => __( 'Bancontact/Mister Cash', 'pronamic_ideal' ),
+			'dropdown'  => __( 'Bancontact', 'pronamic_ideal' ),
+			'admin'     => __( 'Bancontact', 'pronamic_ideal' ),
 			'recurring' => false,
 		) );
 	}
