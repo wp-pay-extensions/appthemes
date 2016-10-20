@@ -7,7 +7,7 @@
  * Company: Pronamic
  *
  * @author Reüel van der Steege
- * @version 1.0.3
+ * @version 1.0.5
  * @since 1.0.3
  */
 class Pronamic_WP_Pay_Extensions_AppThemes_BancontactGateway extends Pronamic_WP_Pay_Extensions_AppThemes_Gateway {
@@ -23,7 +23,7 @@ class Pronamic_WP_Pay_Extensions_AppThemes_BancontactGateway extends Pronamic_WP
 	 */
 	public function __construct() {
 		$this->id             = self::ID;
-		$this->payment_method = Pronamic_WP_Pay_PaymentMethods::MISTER_CASH;
+		$this->payment_method = Pronamic_WP_Pay_PaymentMethods::BANCONTACT;
 
 		parent::__construct( array(
 			'dropdown'  => __( 'Bancontact', 'pronamic_ideal' ),
