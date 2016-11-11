@@ -54,6 +54,7 @@ class Pronamic_WP_Pay_Extensions_AppThemes_Gateway extends APP_Gateway {
 				'type'    => 'select',
 				'name'    => 'config_id',
 				'choices' => Pronamic_WP_Pay_Plugin::get_config_select_options( $this->payment_method ),
+				'default' => get_option( 'pronamic_pay_config_id' ),
 			),
 		);
 
