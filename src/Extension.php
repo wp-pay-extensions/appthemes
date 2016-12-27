@@ -46,6 +46,8 @@ class Pronamic_WP_Pay_Extensions_AppThemes_Extension {
 
 			add_action( 'pronamic_payment_status_update_' . self::SLUG, array( __CLASS__, 'status_update' ), 10, 2 );
 			add_filter( 'pronamic_payment_source_text_' . self::SLUG,   array( __CLASS__, 'source_text' ), 10, 2 );
+			add_filter( 'pronamic_payment_source_description_' . self::SLUG,   array( __CLASS__, 'source_description' ), 10, 2 );
+			add_filter( 'pronamic_payment_source_url_' . self::SLUG,   array( __CLASS__, 'source_url' ), 10, 2 );
 		}
 	}
 
@@ -148,5 +150,23 @@ class Pronamic_WP_Pay_Extensions_AppThemes_Extension {
 		);
 
 		return $text;
+	}
+
+	/**
+	 * Source description.
+	 */
+	public static function source_description( $description, Pronamic_Pay_Payment $payment ) {
+		$description = __( 'AppThemes Order', 'pronamic_ideal' );
+
+		return $description;
+	}
+
+	/**
+	 * Source URL.
+	 */
+	public static function source_url( $url, Pronamic_Pay_Payment $payment ) {
+		$url = get_edit_post_link( $payment->get_source_id() );
+
+		return $url;
 	}
 }
