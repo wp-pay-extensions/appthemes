@@ -3,7 +3,7 @@
 /**
  * Title: AppThemes Credit Card Gateway
  * Description:
- * Copyright: Copyright (c) 2005 - 2016
+ * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
  * @author Reüel van der Steege
