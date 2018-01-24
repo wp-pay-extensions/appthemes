@@ -1,4 +1,5 @@
 <?php
+use Pronamic\WordPress\Pay\Plugin;
 
 /**
  * Title: AppThemes Pronamic Gateway
@@ -53,7 +54,7 @@ class Pronamic_WP_Pay_Extensions_AppThemes_Gateway extends APP_Gateway {
 				'title'   => __( 'Configuration', 'pronamic_ideal' ),
 				'type'    => 'select',
 				'name'    => 'config_id',
-				'choices' => Pronamic_WP_Pay_Plugin::get_config_select_options( $this->payment_method ),
+				'choices' => Plugin::get_config_select_options( $this->payment_method ),
 				'default' => get_option( 'pronamic_pay_config_id' ),
 			),
 		);
@@ -75,7 +76,7 @@ class Pronamic_WP_Pay_Extensions_AppThemes_Gateway extends APP_Gateway {
 		if ( isset( $options['config_id'] ) ) {
 			$config_id = $options['config_id'];
 
-			$gateway = Pronamic_WP_Pay_Plugin::get_gateway( $config_id );
+			$gateway = Plugin::get_gateway( $config_id );
 
 			if ( $gateway ) {
 				if ( null === $this->payment_method && $gateway->payment_method_is_required() ) {
@@ -85,7 +86,7 @@ class Pronamic_WP_Pay_Extensions_AppThemes_Gateway extends APP_Gateway {
 				$data = new Pronamic_WP_Pay_Extensions_AppThemes_PaymentData( $order );
 
 				if ( filter_has_var( INPUT_POST, 'appthemes_' . $this->id ) ) {
-					$payment = Pronamic_WP_Pay_Plugin::start( $config_id, $gateway, $data, $this->payment_method );
+					$payment = Plugin::start( $config_id, $gateway, $data, $this->payment_method );
 
 					$error = $gateway->get_error();
 
