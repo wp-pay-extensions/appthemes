@@ -1,4 +1,5 @@
 <?php
+use Pronamic\WordPress\Pay\Core\PaymentMethods;
 
 /**
  * Title: AppThemes Direct Debit Gateway
@@ -23,7 +24,7 @@ class Pronamic_WP_Pay_Extensions_AppThemes_DirectDebitGateway extends Pronamic_W
 	 */
 	public function __construct() {
 		$this->id             = self::ID;
-		$this->payment_method = Pronamic_WP_Pay_PaymentMethods::DIRECT_DEBIT;
+		$this->payment_method = PaymentMethods::DIRECT_DEBIT;
 
 		parent::__construct( array(
 			'dropdown'  => __( 'Direct Debit', 'pronamic_ideal' ),

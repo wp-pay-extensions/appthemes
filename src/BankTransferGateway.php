@@ -1,4 +1,5 @@
 <?php
+use Pronamic\WordPress\Pay\Core\PaymentMethods;
 
 /**
  * Title: AppThemes Bank Transfer Gateway
@@ -23,7 +24,7 @@ class Pronamic_WP_Pay_Extensions_AppThemes_BankTransferGateway extends Pronamic_
 	 */
 	public function __construct() {
 		$this->id             = self::ID;
-		$this->payment_method = Pronamic_WP_Pay_PaymentMethods::BANK_TRANSFER;
+		$this->payment_method = PaymentMethods::BANK_TRANSFER;
 
 		parent::__construct( array(
 			'dropdown'  => __( 'Bank Transfer', 'pronamic_ideal' ),

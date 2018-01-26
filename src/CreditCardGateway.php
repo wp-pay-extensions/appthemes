@@ -1,4 +1,5 @@
 <?php
+use Pronamic\WordPress\Pay\Core\PaymentMethods;
 
 /**
  * Title: AppThemes Credit Card Gateway
@@ -23,7 +24,7 @@ class Pronamic_WP_Pay_Extensions_AppThemes_CreditCardGateway extends Pronamic_WP
 	 */
 	public function __construct() {
 		$this->id             = self::ID;
-		$this->payment_method = Pronamic_WP_Pay_PaymentMethods::CREDIT_CARD;
+		$this->payment_method = PaymentMethods::CREDIT_CARD;
 
 		parent::__construct( array(
 			'dropdown'  => __( 'Credit Card', 'pronamic_ideal' ),

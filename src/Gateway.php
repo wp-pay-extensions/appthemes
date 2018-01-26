@@ -1,4 +1,5 @@
 <?php
+use Pronamic\WordPress\Pay\Core\PaymentMethods;
 use Pronamic\WordPress\Pay\Plugin;
 
 /**
@@ -80,7 +81,7 @@ class Pronamic_WP_Pay_Extensions_AppThemes_Gateway extends APP_Gateway {
 
 			if ( $gateway ) {
 				if ( null === $this->payment_method && $gateway->payment_method_is_required() ) {
-					$this->payment_method = Pronamic_WP_Pay_PaymentMethods::IDEAL;
+					$this->payment_method = PaymentMethods::IDEAL;
 				}
 
 				$data = new Pronamic_WP_Pay_Extensions_AppThemes_PaymentData( $order );

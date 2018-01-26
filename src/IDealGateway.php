@@ -1,4 +1,5 @@
 <?php
+use Pronamic\WordPress\Pay\Core\PaymentMethods;
 
 /**
  * Title: AppThemes iDEAL Gateway
@@ -23,7 +24,7 @@ class Pronamic_WP_Pay_Extensions_AppThemes_IDealGateway extends Pronamic_WP_Pay_
 	 */
 	public function __construct() {
 		$this->id             = self::ID;
-		$this->payment_method = Pronamic_WP_Pay_PaymentMethods::IDEAL;
+		$this->payment_method = PaymentMethods::IDEAL;
 
 		parent::__construct( array(
 			'dropdown'  => __( 'iDEAL', 'pronamic_ideal' ),

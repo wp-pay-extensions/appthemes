@@ -1,4 +1,5 @@
 <?php
+use Pronamic\WordPress\Pay\Core\PaymentMethods;
 
 /**
  * Title: AppThemes SOFORT Banking Gateway
@@ -23,7 +24,7 @@ class Pronamic_WP_Pay_Extensions_AppThemes_SofortGateway extends Pronamic_WP_Pay
 	 */
 	public function __construct() {
 		$this->id             = self::ID;
-		$this->payment_method = Pronamic_WP_Pay_PaymentMethods::SOFORT;
+		$this->payment_method = PaymentMethods::SOFORT;
 
 		parent::__construct( array(
 			'dropdown'  => __( 'SOFORT Banking', 'pronamic_ideal' ),
