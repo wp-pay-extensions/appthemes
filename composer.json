@@ -3,7 +3,7 @@
 	"description": "AppThemes driver for the WordPress payment processing library.",
 	"keywords": ["wordpress", "wp", "pay", "appthemes", "extension", "pronamic"],
 	"homepage": "http://www.wp-pay.org/extensions/appthemes/",
-	"license": "GPL-3.0+",
+	"license": "GPL-3.0-or-later",
 	"authors": [
 		{
 			"name": "Pronamic",
