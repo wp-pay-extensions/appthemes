@@ -1,4 +1,7 @@
 <?php
+
+namespace Pronamic\WordPress\Pay\Extensions\AppThemes;
+
 use Pronamic\WordPress\Pay\Core\PaymentMethods;
 
 /**
@@ -7,11 +10,11 @@ use Pronamic\WordPress\Pay\Core\PaymentMethods;
  * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Reüel van der Steege
+ * @author  Reüel van der Steege
  * @version 1.0.5
- * @since 1.0.3
+ * @since   1.0.3
  */
-class Pronamic_WP_Pay_Extensions_AppThemes_BancontactGateway extends Pronamic_WP_Pay_Extensions_AppThemes_Gateway {
+class BancontactGateway extends Gateway {
 	/**
 	 * The unique ID of this Bancontact payment gateway.
 	 *

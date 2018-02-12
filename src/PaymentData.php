@@ -1,5 +1,9 @@
 <?php
-use Pronamic\WordPress\Pay\Payments\PaymentData;
+
+namespace Pronamic\WordPress\Pay\Extensions\AppThemes;
+
+use APP_Order_Receipt;
+use Pronamic\WordPress\Pay\Payments\PaymentData as Pay_PaymentData;
 use Pronamic\WordPress\Pay\Payments\Item;
 use Pronamic\WordPress\Pay\Payments\Items;
 
@@ -9,11 +13,11 @@ use Pronamic\WordPress\Pay\Payments\Items;
  * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
+ * @author  Remco Tolsma
  * @version 1.0.2
- * @since 1.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Extensions_AppThemes_PaymentData extends PaymentData {
+class PaymentData extends Pay_PaymentData {
 	/**
 	 * AppThemes order
 	 *
@@ -25,8 +29,10 @@ class Pronamic_WP_Pay_Extensions_AppThemes_PaymentData extends PaymentData {
 
 	/**
 	 * Constructs and intializes an AppThems payment data object
+	 *
+	 * @param APP_Order_Receipt $order
 	 */
-	public function __construct( $order ) {
+	public function __construct( APP_Order_Receipt $order ) {
 		parent::__construct();
 
 		$this->order = $order;
@@ -132,7 +138,6 @@ class Pronamic_WP_Pay_Extensions_AppThemes_PaymentData extends PaymentData {
 
 	//////////////////////////////////////////////////
 	// URL's
-	// @todo we could also use $this->merchant->cart_data['transaction_results_url']
 	// @see http://plugins.trac.wordpress.org/browser/wp-e-commerce/tags/3.8.8.3/wpsc-includes/merchant.class.php#L184
 	//////////////////////////////////////////////////
 
