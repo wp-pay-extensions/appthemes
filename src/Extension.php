@@ -23,8 +23,6 @@ class Extension {
 	 */
 	const SLUG = 'appthemes';
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Bootstrap
 	 */
@@ -33,8 +31,6 @@ class Extension {
 
 		add_action( 'template_redirect', array( __CLASS__, 'maybe_process_the_order' ) );
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Initialize
@@ -86,8 +82,6 @@ class Extension {
 			break;
 		}
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Update lead status of the specified payment
@@ -149,8 +143,6 @@ class Extension {
 			exit;
 		}
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Source column

@@ -25,8 +25,6 @@ class PaymentData extends Pay_PaymentData {
 	 */
 	private $order;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Constructs and intializes an AppThems payment data object
 	 *
@@ -38,8 +36,6 @@ class PaymentData extends Pay_PaymentData {
 		$this->order = $order;
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get source indicator
 	 *
@@ -49,8 +45,6 @@ class PaymentData extends Pay_PaymentData {
 	public function get_source() {
 		return 'appthemes';
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get description
@@ -94,10 +88,6 @@ class PaymentData extends Pay_PaymentData {
 		return $items;
 	}
 
-	//////////////////////////////////////////////////
-	// Currency
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get currency alphabetic code
 	 *
@@ -107,10 +97,6 @@ class PaymentData extends Pay_PaymentData {
 	public function get_currency_alphabetic_code() {
 		return $this->order->get_currency();
 	}
-
-	//////////////////////////////////////////////////
-	// Customer
-	//////////////////////////////////////////////////
 
 	public function get_email() {
 		$author_id = $this->order->get_author();
@@ -136,11 +122,7 @@ class PaymentData extends Pay_PaymentData {
 		return '';
 	}
 
-	//////////////////////////////////////////////////
-	// URL's
 	// @see http://plugins.trac.wordpress.org/browser/wp-e-commerce/tags/3.8.8.3/wpsc-includes/merchant.class.php#L184
-	//////////////////////////////////////////////////
-
 	public function get_normal_return_url() {
 		return $this->order->get_return_url();
 	}

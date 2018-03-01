@@ -48,8 +48,6 @@ class Gateway extends APP_Gateway {
 		parent::__construct( $this->id, $args );
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Returns an array representing the form to output for admin config.
 	 */
@@ -71,8 +69,6 @@ class Gateway extends APP_Gateway {
 
 		return $return_array;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Processes a payment using this gateway.
