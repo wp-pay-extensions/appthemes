@@ -19,5 +19,10 @@
 		<exclude name="WordPress.VIP.RestrictedFunctions.wp_redirect" />
 
 		<exclude name="WordPress.XSS.EscapeOutput" />
-	</rule>
+
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+
+		<exclude name="WordPress.VIP.RestrictedFunctions.wp_redirect_wp_redirect" />
+    </rule>
 </ruleset>
