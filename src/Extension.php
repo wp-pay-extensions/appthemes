@@ -152,6 +152,7 @@ class Extension {
 
 		$text .= sprintf( '<a href="%s">%s</a>',
 			get_edit_post_link( $payment->get_source_id() ),
+			/* translators: %s: payment source id */
 			sprintf( __( 'Order #%s', 'pronamic_ideal' ), $payment->get_source_id() )
 		);
 
