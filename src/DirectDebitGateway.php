@@ -1,16 +1,20 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Extensions\AppThemes;
+
+use Pronamic\WordPress\Pay\Core\PaymentMethods;
+
 /**
  * Title: AppThemes Direct Debit Gateway
  * Description:
- * Copyright: Copyright (c) 2005 - 2016
+ * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Reüel van der Steege
- * @version 1.0.3
- * @since 1.0.3
+ * @author  Reüel van der Steege
+ * @version 2.0.0
+ * @since   1.0.3
  */
-class Pronamic_WP_Pay_Extensions_AppThemes_DirectDebitGateway extends Pronamic_WP_Pay_Extensions_AppThemes_Gateway {
+class DirectDebitGateway extends Gateway {
 	/**
 	 * The unique ID of this Direct Debit payment gateway
 	 *
@@ -23,7 +27,7 @@ class Pronamic_WP_Pay_Extensions_AppThemes_DirectDebitGateway extends Pronamic_W
 	 */
 	public function __construct() {
 		$this->id             = self::ID;
-		$this->payment_method = Pronamic_WP_Pay_PaymentMethods::DIRECT_DEBIT;
+		$this->payment_method = PaymentMethods::DIRECT_DEBIT;
 
 		parent::__construct( array(
 			'dropdown'  => __( 'Direct Debit', 'pronamic_ideal' ),

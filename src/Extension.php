@@ -1,24 +1,27 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Extensions\AppThemes;
+
+use Pronamic\WordPress\Pay\Core\Statuses;
+use Pronamic\WordPress\Pay\Payments\Payment;
+
 /**
  * Title: AppThemes iDEAL Add-On
  * Description:
- * Copyright: Copyright (c) 2005 - 2016
+ * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
- * @version 1.0.4
- * @since 1.0.0
+ * @author  Remco Tolsma
+ * @version 2.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Extensions_AppThemes_Extension {
+class Extension {
 	/**
 	 * Slug
 	 *
 	 * @var string
 	 */
 	const SLUG = 'appthemes';
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Bootstrap
@@ -29,30 +32,36 @@ class Pronamic_WP_Pay_Extensions_AppThemes_Extension {
 		add_action( 'template_redirect', array( __CLASS__, 'maybe_process_the_order' ) );
 	}
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Initialize
 	 */
 	public static function load_gateway() {
-		if ( function_exists( 'appthemes_register_gateway' ) ) {
-			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_Gateway' );
-			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_BancontactGateway' );
-			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_BankTransferGateway' );
-			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_CreditCardGateway' );
-			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_DirectDebitGateway' );
-			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_IDealGateway' );
-			appthemes_register_gateway( 'Pronamic_WP_Pay_Extensions_AppThemes_SofortGateway' );
-
-			add_action( 'pronamic_payment_status_update_' . self::SLUG, array( __CLASS__, 'status_update' ), 10, 2 );
-			add_filter( 'pronamic_payment_source_text_' . self::SLUG,   array( __CLASS__, 'source_text' ), 10, 2 );
+		if ( ! function_exists( 'appthemes_register_gateway' ) ) {
+			return;
 		}
+
+		appthemes_register_gateway( 'Pronamic\WordPress\Pay\Extensions\AppThemes\Gateway' );
+		appthemes_register_gateway( 'Pronamic\WordPress\Pay\Extensions\AppThemes\BancontactGateway' );
+		appthemes_register_gateway( 'Pronamic\WordPress\Pay\Extensions\AppThemes\BankTransferGateway' );
+		appthemes_register_gateway( 'Pronamic\WordPress\Pay\Extensions\AppThemes\CreditCardGateway' );
+		appthemes_register_gateway( 'Pronamic\WordPress\Pay\Extensions\AppThemes\DirectDebitGateway' );
+		appthemes_register_gateway( 'Pronamic\WordPress\Pay\Extensions\AppThemes\IDealGateway' );
+		appthemes_register_gateway( 'Pronamic\WordPress\Pay\Extensions\AppThemes\SofortGateway' );
+
+		add_action( 'pronamic_payment_status_update_' . self::SLUG, array( __CLASS__, 'status_update' ), 10, 2 );
+		add_filter( 'pronamic_payment_source_text_' . self::SLUG, array( __CLASS__, 'source_text' ), 10, 2 );
+		add_filter( 'pronamic_payment_source_description_' . self::SLUG, array( __CLASS__, 'source_description' ), 10, 2 );
+		add_filter( 'pronamic_payment_source_url_' . self::SLUG, array( __CLASS__, 'source_url' ), 10, 2 );
 	}
 
 	/**
 	 * Maybe redirect
 	 */
 	public static function maybe_process_the_order() {
+		if ( ! function_exists( 'process_the_order' ) ) {
+			return;
+		}
+
 		$gateways = array(
 			'appthemes_pronamic_ideal',
 			'appthemes_pronamic_pay',
@@ -64,89 +73,103 @@ class Pronamic_WP_Pay_Extensions_AppThemes_Extension {
 		);
 
 		foreach ( $gateways as $gateway ) {
-			if ( filter_has_var( INPUT_POST, $gateway ) ) {
-				process_the_order();
-
-				break;
+			if ( ! filter_has_var( INPUT_POST, $gateway ) ) {
+				continue;
 			}
+
+			process_the_order();
+
+			break;
 		}
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Update lead status of the specified payment
 	 *
-	 * @param string $payment
+	 * @param Payment $payment
+	 * @param bool    $can_redirect
 	 */
-	public static function status_update( Pronamic_Pay_Payment $payment, $can_redirect = false ) {
-		if ( self::SLUG === $payment->get_source() ) {
-			$id = $payment->get_source_id();
+	public static function status_update( Payment $payment, $can_redirect = false ) {
+		if ( self::SLUG !== $payment->get_source() ) {
+			return;
+		}
 
-			$order = appthemes_get_order( $id );
+		$id = $payment->get_source_id();
 
-			$data = new Pronamic_WP_Pay_Extensions_AppThemes_PaymentData( $order );
+		$order = appthemes_get_order( $id );
 
-			$url = $data->get_normal_return_url();
+		$data = new PaymentData( $order );
 
-			switch ( $payment->status ) {
-				case Pronamic_WP_Pay_Statuses::CANCELLED:
-					$order->failed();
+		$url = $data->get_normal_return_url();
 
-					$url = $data->get_cancel_url();
+		switch ( $payment->status ) {
+			case Statuses::CANCELLED:
+				$order->failed();
 
-					break;
-				case Pronamic_WP_Pay_Statuses::EXPIRED:
-					$order->failed();
+				$url = $data->get_cancel_url();
 
-					$url = $data->get_error_url();
+				break;
+			case Statuses::EXPIRED:
+				$order->failed();
 
-					break;
-				case Pronamic_WP_Pay_Statuses::FAILURE:
-					$order->failed();
+				$url = $data->get_error_url();
 
-					$url = $data->get_error_url();
+				break;
+			case Statuses::FAILURE:
+				$order->failed();
 
-					break;
-				case Pronamic_WP_Pay_Statuses::SUCCESS:
-					$order->complete();
+				$url = $data->get_error_url();
 
-					$url = $data->get_success_url();
+				break;
+			case Statuses::SUCCESS:
+				$order->complete();
 
-					break;
-				case Pronamic_WP_Pay_Statuses::OPEN:
-					$order->pending();
+				$url = $data->get_success_url();
 
-					break;
-				default:
-					$order->pending();
+				break;
+			case Statuses::OPEN:
+				$order->pending();
 
-					break;
-			}
+				break;
+			default:
+				$order->pending();
 
-			if ( $can_redirect ) {
-				wp_redirect( $url );
+				break;
+		}
 
-				exit;
-			}
+		if ( $can_redirect ) {
+			wp_redirect( $url );
+
+			exit;
 		}
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Source column
 	 */
-	public static function source_text( $text, Pronamic_Pay_Payment $payment ) {
-		$text  = '';
-
-		$text .= __( 'AppThemes', 'pronamic_ideal' ) . '<br />';
+	public static function source_text( $text, Payment $payment ) {
+		$text = __( 'AppThemes', 'pronamic_ideal' ) . '<br />';
 
 		$text .= sprintf( '<a href="%s">%s</a>',
 			get_edit_post_link( $payment->get_source_id() ),
+			/* translators: %s: payment source id */
 			sprintf( __( 'Order #%s', 'pronamic_ideal' ), $payment->get_source_id() )
 		);
 
 		return $text;
+	}
+
+	/**
+	 * Source description.
+	 */
+	public static function source_description( $description, Payment $payment ) {
+		return __( 'AppThemes Order', 'pronamic_ideal' );
+	}
+
+	/**
+	 * Source URL.
+	 */
+	public static function source_url( $url, Payment $payment ) {
+		return get_edit_post_link( $payment->get_source_id() );
 	}
 }

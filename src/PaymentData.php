@@ -1,16 +1,23 @@
 <?php
 
+namespace Pronamic\WordPress\Pay\Extensions\AppThemes;
+
+use APP_Order_Receipt;
+use Pronamic\WordPress\Pay\Payments\PaymentData as Pay_PaymentData;
+use Pronamic\WordPress\Pay\Payments\Item;
+use Pronamic\WordPress\Pay\Payments\Items;
+
 /**
  * Title: WordPress AppThemes payment data
  * Description:
- * Copyright: Copyright (c) 2005 - 2016
+ * Copyright: Copyright (c) 2005 - 2018
  * Company: Pronamic
  *
- * @author Remco Tolsma
- * @version 1.0.2
- * @since 1.0.0
+ * @author  Remco Tolsma
+ * @version 2.0.0
+ * @since   1.0.0
  */
-class Pronamic_WP_Pay_Extensions_AppThemes_PaymentData extends Pronamic_WP_Pay_PaymentData {
+class PaymentData extends Pay_PaymentData {
 	/**
 	 * AppThemes order
 	 *
@@ -18,18 +25,16 @@ class Pronamic_WP_Pay_Extensions_AppThemes_PaymentData extends Pronamic_WP_Pay_P
 	 */
 	private $order;
 
-	//////////////////////////////////////////////////
-
 	/**
 	 * Constructs and intializes an AppThems payment data object
+	 *
+	 * @param APP_Order_Receipt $order
 	 */
-	public function __construct( $order ) {
+	public function __construct( APP_Order_Receipt $order ) {
 		parent::__construct();
 
 		$this->order = $order;
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get source indicator
@@ -40,8 +45,6 @@ class Pronamic_WP_Pay_Extensions_AppThemes_PaymentData extends Pronamic_WP_Pay_P
 	public function get_source() {
 		return 'appthemes';
 	}
-
-	//////////////////////////////////////////////////
 
 	/**
 	 * Get description
@@ -67,14 +70,14 @@ class Pronamic_WP_Pay_Extensions_AppThemes_PaymentData extends Pronamic_WP_Pay_P
 	 * Get items
 	 *
 	 * @see Pronamic_Pay_PaymentDataInterface::get_items()
-	 * @return Pronamic_IDeal_Items
+	 * @return Items
 	 */
 	public function get_items() {
 		// Items
-		$items = new Pronamic_IDeal_Items();
+		$items = new Items();
 
 		// Item
-		$item = new Pronamic_IDeal_Item();
+		$item = new Item();
 		$item->setNumber( $this->get_order_id() );
 		$item->setDescription( $this->get_description() );
 		$item->setPrice( $this->order->get_total() );
@@ -85,10 +88,6 @@ class Pronamic_WP_Pay_Extensions_AppThemes_PaymentData extends Pronamic_WP_Pay_P
 		return $items;
 	}
 
-	//////////////////////////////////////////////////
-	// Currency
-	//////////////////////////////////////////////////
-
 	/**
 	 * Get currency alphabetic code
 	 *
@@ -98,10 +97,6 @@ class Pronamic_WP_Pay_Extensions_AppThemes_PaymentData extends Pronamic_WP_Pay_P
 	public function get_currency_alphabetic_code() {
 		return $this->order->get_currency();
 	}
-
-	//////////////////////////////////////////////////
-	// Customer
-	//////////////////////////////////////////////////
 
 	public function get_email() {
 		$author_id = $this->order->get_author();
@@ -127,12 +122,7 @@ class Pronamic_WP_Pay_Extensions_AppThemes_PaymentData extends Pronamic_WP_Pay_P
 		return '';
 	}
 
-	//////////////////////////////////////////////////
-	// URL's
-	// @todo we could also use $this->merchant->cart_data['transaction_results_url']
 	// @see http://plugins.trac.wordpress.org/browser/wp-e-commerce/tags/3.8.8.3/wpsc-includes/merchant.class.php#L184
-	//////////////////////////////////////////////////
-
 	public function get_normal_return_url() {
 		return $this->order->get_return_url();
 	}
