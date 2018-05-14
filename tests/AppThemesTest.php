@@ -11,8 +11,8 @@ use PHPUnit_Framework_TestCase;
  * Company: Pronamic
  *
  * @author  Reüel van der Steege
- * @version unreleased
- * @since   unreleased
+ * @version 2.0.0
+ * @since   2.0.0
  */
 class AppThemesTest extends PHPUnit_Framework_TestCase {
 	/**
