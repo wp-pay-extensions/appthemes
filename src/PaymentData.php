@@ -2,7 +2,7 @@
 
 namespace Pronamic\WordPress\Pay\Extensions\AppThemes;
 
-use APP_Order_Receipt;
+use \APP_Order;
 use Pronamic\WordPress\Pay\Payments\PaymentData as Pay_PaymentData;
 use Pronamic\WordPress\Pay\Payments\Item;
 use Pronamic\WordPress\Pay\Payments\Items;
@@ -21,16 +21,16 @@ class PaymentData extends Pay_PaymentData {
 	/**
 	 * AppThemes order
 	 *
-	 * @var APP_Order_Receipt
+	 * @var APP_Order
 	 */
 	private $order;
 
 	/**
 	 * Constructs and intializes an AppThems payment data object
 	 *
-	 * @param APP_Order_Receipt $order
+	 * @param APP_Order $order Order.
 	 */
-	public function __construct( APP_Order_Receipt $order ) {
+	public function __construct( APP_Order $order ) {
 		parent::__construct();
 
 		$this->order = $order;
