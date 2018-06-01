@@ -2,7 +2,8 @@
 
 namespace Pronamic\WordPress\Pay\Extensions\AppThemes;
 
-use APP_Gateway;
+use \APP_Gateway;
+use \APP_Order;
 use Pronamic\WordPress\Pay\Core\PaymentMethods;
 use Pronamic\WordPress\Pay\Plugin;
 
@@ -13,7 +14,7 @@ use Pronamic\WordPress\Pay\Plugin;
  * Company: Pronamic
  *
  * @author  Remco Tolsma
- * @version 2.0.0
+ * @version 2.0.1
  * @since   1.0.0
  */
 class Gateway extends APP_Gateway {
@@ -73,10 +74,10 @@ class Gateway extends APP_Gateway {
 	/**
 	 * Processes a payment using this gateway.
 	 *
-	 * @param APP_Order_Receipt $order
-	 * @param array             $options
+	 * @param APP_Order $order   Order.
+	 * @param array     $options Options.
 	 */
-	public function process( APP_Order_Receipt $order, array $options ) {
+	public function process( APP_Order $order, array $options ) {
 		if ( ! isset( $options['config_id'] ) ) {
 			return;
 		}
