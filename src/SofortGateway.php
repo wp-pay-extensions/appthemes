@@ -29,10 +29,12 @@ class SofortGateway extends Gateway {
 		$this->id             = self::ID;
 		$this->payment_method = PaymentMethods::SOFORT;
 
-		parent::__construct( array(
-			'dropdown'  => __( 'SOFORT Banking', 'pronamic_ideal' ),
-			'admin'     => __( 'SOFORT Banking', 'pronamic_ideal' ),
-			'recurring' => false,
-		) );
+		parent::__construct(
+			array(
+				'dropdown'  => __( 'SOFORT Banking', 'pronamic_ideal' ),
+				'admin'     => __( 'SOFORT Banking', 'pronamic_ideal' ),
+				'recurring' => false,
+			)
+		);
 	}
 }

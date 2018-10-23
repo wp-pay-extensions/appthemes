@@ -73,10 +73,10 @@ class PaymentData extends Pay_PaymentData {
 	 * @return Items
 	 */
 	public function get_items() {
-		// Items
+		// Items.
 		$items = new Items();
 
-		// Item
+		// Item.
 		$item = new Item();
 		$item->set_number( $this->get_order_id() );
 		$item->set_description( $this->get_description() );
@@ -122,7 +122,7 @@ class PaymentData extends Pay_PaymentData {
 		return '';
 	}
 
-	// @see http://plugins.trac.wordpress.org/browser/wp-e-commerce/tags/3.8.8.3/wpsc-includes/merchant.class.php#L184
+	// @link https://plugins.trac.wordpress.org/browser/wp-e-commerce/tags/3.8.8.3/wpsc-includes/merchant.class.php#L184
 	public function get_normal_return_url() {
 		return $this->order->get_return_url();
 	}

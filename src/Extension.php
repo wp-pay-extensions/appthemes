@@ -146,11 +146,17 @@ class Extension {
 
 	/**
 	 * Source column
+	 *
+	 * @param string  $text    Source text.
+	 * @param Payment $payment Payment to get source text for.
+	 *
+	 * @return string
 	 */
 	public static function source_text( $text, Payment $payment ) {
 		$text = __( 'AppThemes', 'pronamic_ideal' ) . '<br />';
 
-		$text .= sprintf( '<a href="%s">%s</a>',
+		$text .= sprintf(
+			'<a href="%s">%s</a>',
 			get_edit_post_link( $payment->get_source_id() ),
 			/* translators: %s: payment source id */
 			sprintf( __( 'Order #%s', 'pronamic_ideal' ), $payment->get_source_id() )
@@ -161,6 +167,11 @@ class Extension {
 
 	/**
 	 * Source description.
+	 *
+	 * @param string  $description Source description.
+	 * @param Payment $payment     Payment to get source description for.
+	 *
+	 * @return string
 	 */
 	public static function source_description( $description, Payment $payment ) {
 		return __( 'AppThemes Order', 'pronamic_ideal' );
@@ -168,6 +179,11 @@ class Extension {
 
 	/**
 	 * Source URL.
+	 *
+	 * @param string  $url     Source URL.
+	 * @param Payment $payment Payment to get source URL for.
+	 *
+	 * @return string|null
 	 */
 	public static function source_url( $url, Payment $payment ) {
 		return get_edit_post_link( $payment->get_source_id() );

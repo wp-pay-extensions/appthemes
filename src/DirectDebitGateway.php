@@ -29,10 +29,12 @@ class DirectDebitGateway extends Gateway {
 		$this->id             = self::ID;
 		$this->payment_method = PaymentMethods::DIRECT_DEBIT;
 
-		parent::__construct( array(
-			'dropdown'  => __( 'Direct Debit', 'pronamic_ideal' ),
-			'admin'     => __( 'Direct Debit', 'pronamic_ideal' ),
-			'recurring' => false,
-		) );
+		parent::__construct(
+			array(
+				'dropdown'  => __( 'Direct Debit', 'pronamic_ideal' ),
+				'admin'     => __( 'Direct Debit', 'pronamic_ideal' ),
+				'recurring' => false,
+			)
+		);
 	}
 }
