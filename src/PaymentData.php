@@ -14,7 +14,7 @@ use Pronamic\WordPress\Pay\Payments\Items;
  * Company: Pronamic
  *
  * @author  Remco Tolsma
- * @version 2.0.1
+ * @version 2.0.2
  * @since   1.0.0
  */
 class PaymentData extends Pay_PaymentData {
@@ -73,15 +73,15 @@ class PaymentData extends Pay_PaymentData {
 	 * @return Items
 	 */
 	public function get_items() {
-		// Items
+		// Items.
 		$items = new Items();
 
-		// Item
+		// Item.
 		$item = new Item();
-		$item->setNumber( $this->get_order_id() );
-		$item->setDescription( $this->get_description() );
-		$item->setPrice( $this->order->get_total() );
-		$item->setQuantity( 1 );
+		$item->set_number( $this->get_order_id() );
+		$item->set_description( $this->get_description() );
+		$item->set_price( $this->order->get_total() );
+		$item->set_quantity( 1 );
 
 		$items->addItem( $item );
 
@@ -122,7 +122,7 @@ class PaymentData extends Pay_PaymentData {
 		return '';
 	}
 
-	// @see http://plugins.trac.wordpress.org/browser/wp-e-commerce/tags/3.8.8.3/wpsc-includes/merchant.class.php#L184
+	// @link https://plugins.trac.wordpress.org/browser/wp-e-commerce/tags/3.8.8.3/wpsc-includes/merchant.class.php#L184
 	public function get_normal_return_url() {
 		return $this->order->get_return_url();
 	}

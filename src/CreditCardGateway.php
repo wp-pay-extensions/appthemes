@@ -29,10 +29,12 @@ class CreditCardGateway extends Gateway {
 		$this->id             = self::ID;
 		$this->payment_method = PaymentMethods::CREDIT_CARD;
 
-		parent::__construct( array(
-			'dropdown'  => __( 'Credit Card', 'pronamic_ideal' ),
-			'admin'     => __( 'Credit Card', 'pronamic_ideal' ),
-			'recurring' => false,
-		) );
+		parent::__construct(
+			array(
+				'dropdown'  => __( 'Credit Card', 'pronamic_ideal' ),
+				'admin'     => __( 'Credit Card', 'pronamic_ideal' ),
+				'recurring' => false,
+			)
+		);
 	}
 }

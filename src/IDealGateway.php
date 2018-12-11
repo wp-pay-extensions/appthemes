@@ -29,10 +29,12 @@ class IDealGateway extends Gateway {
 		$this->id             = self::ID;
 		$this->payment_method = PaymentMethods::IDEAL;
 
-		parent::__construct( array(
-			'dropdown'  => __( 'iDEAL', 'pronamic_ideal' ),
-			'admin'     => __( 'iDEAL', 'pronamic_ideal' ),
-			'recurring' => false,
-		) );
+		parent::__construct(
+			array(
+				'dropdown'  => __( 'iDEAL', 'pronamic_ideal' ),
+				'admin'     => __( 'iDEAL', 'pronamic_ideal' ),
+				'recurring' => false,
+			)
+		);
 	}
 }

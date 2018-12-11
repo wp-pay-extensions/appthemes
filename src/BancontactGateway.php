@@ -29,10 +29,12 @@ class BancontactGateway extends Gateway {
 		$this->id             = self::ID;
 		$this->payment_method = PaymentMethods::BANCONTACT;
 
-		parent::__construct( array(
-			'dropdown'  => __( 'Bancontact', 'pronamic_ideal' ),
-			'admin'     => __( 'Bancontact', 'pronamic_ideal' ),
-			'recurring' => false,
-		) );
+		parent::__construct(
+			array(
+				'dropdown'  => __( 'Bancontact', 'pronamic_ideal' ),
+				'admin'     => __( 'Bancontact', 'pronamic_ideal' ),
+				'recurring' => false,
+			)
+		);
 	}
 }

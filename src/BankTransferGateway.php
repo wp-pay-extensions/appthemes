@@ -29,10 +29,12 @@ class BankTransferGateway extends Gateway {
 		$this->id             = self::ID;
 		$this->payment_method = PaymentMethods::BANK_TRANSFER;
 
-		parent::__construct( array(
-			'dropdown'  => __( 'Bank Transfer', 'pronamic_ideal' ),
-			'admin'     => __( 'Bank Transfer', 'pronamic_ideal' ),
-			'recurring' => false,
-		) );
+		parent::__construct(
+			array(
+				'dropdown'  => __( 'Bank Transfer', 'pronamic_ideal' ),
+				'admin'     => __( 'Bank Transfer', 'pronamic_ideal' ),
+				'recurring' => false,
+			)
+		);
 	}
 }

@@ -34,6 +34,8 @@ class Gateway extends APP_Gateway {
 
 	/**
 	 * Constructs and initialize the gateway for AppThemes.
+	 *
+	 * @param array $args Gateway setting arguments.
 	 */
 	public function __construct( $args = array() ) {
 		if ( empty( $args ) ) {
@@ -111,9 +113,9 @@ class Gateway extends APP_Gateway {
 		} else {
 			?>
 			<form method="post" action="">
-				<?php $gateway->set_payment_method( $this->payment_method ); ?>
-
 				<?php
+
+				$gateway->set_payment_method( $this->payment_method );
 
 				echo $gateway->get_input_html(); // WPCS: xss ok.
 
