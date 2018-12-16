@@ -98,43 +98,89 @@ class PaymentData extends Pay_PaymentData {
 		return $this->order->get_currency();
 	}
 
+	/**
+	 * Get email address.
+	 *
+	 * @return string
+	 */
 	public function get_email() {
 		$author_id = $this->order->get_author();
 
 		return get_the_author_meta( 'user_email', $author_id );
 	}
 
+	/**
+	 * Get customer name.
+	 *
+	 * @return string
+	 */
 	public function get_customer_name() {
 		$author_id = $this->order->get_author();
 
 		return get_the_author_meta( 'first_name', $author_id ) . ' ' . get_the_author_meta( 'last_name', $author_id );
 	}
 
+	/**
+	 * Get address.
+	 *
+	 * @return string
+	 */
 	public function get_address() {
 		return '';
 	}
 
+	/**
+	 * Get city.
+	 *
+	 * @return string
+	 */
 	public function get_city() {
 		return '';
 	}
 
+	/**
+	 * Get ZIP.
+	 *
+	 * @return string
+	 */
 	public function get_zip() {
 		return '';
 	}
 
-	// @link https://plugins.trac.wordpress.org/browser/wp-e-commerce/tags/3.8.8.3/wpsc-includes/merchant.class.php#L184
+	/**
+	 * Get normal return URL.
+	 *
+	 * @link https://plugins.trac.wordpress.org/browser/wp-e-commerce/tags/3.8.8.3/wpsc-includes/merchant.class.php#L184
+	 *
+	 * @return string
+	 */
 	public function get_normal_return_url() {
 		return $this->order->get_return_url();
 	}
 
+	/**
+	 * Get cancel URL.
+	 *
+	 * @return string
+	 */
 	public function get_cancel_url() {
 		return $this->order->get_cancel_url();
 	}
 
+	/**
+	 * Get success URL.
+	 *
+	 * @return string
+	 */
 	public function get_success_url() {
 		return $this->order->get_return_url();
 	}
 
+	/**
+	 * Get error URL.
+	 *
+	 * @return string
+	 */
 	public function get_error_url() {
 		return $this->order->get_return_url();
 	}

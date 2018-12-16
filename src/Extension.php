@@ -86,8 +86,8 @@ class Extension {
 	/**
 	 * Update lead status of the specified payment
 	 *
-	 * @param Payment $payment
-	 * @param bool    $can_redirect
+	 * @param Payment $payment      Payment.
+	 * @param bool    $can_redirect Whether or not to redirect.
 	 */
 	public static function status_update( Payment $payment, $can_redirect = false ) {
 		if ( self::SLUG !== $payment->get_source() ) {
