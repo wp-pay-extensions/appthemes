@@ -7,7 +7,7 @@ use PHPUnit_Framework_TestCase;
 /**
  * Title: WordPress pay AppThemes test
  * Description:
- * Copyright: Copyright (c) 2005 - 2018
+ * Copyright: Copyright (c) 2005-2019
  * Company: Pronamic
  *
  * @author  Reüel van der Steege
