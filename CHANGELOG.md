@@ -7,6 +7,9 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## [Unreleased][unreleased]
 -
 
+## [2.0.3] - 2019-08-26
+- Updated packages.
+
 ## [2.0.2] - 2018-12-11
 - Update item methods in payment data.
 
@@ -38,7 +41,8 @@ This projects adheres to [Semantic Versioning](http://semver.org/) and [Keep a C
 ## 1.0.0 - 2015-05-26
 - First release.
 
-[unreleased]: https://github.com/wp-pay-extensions/appthemes/compare/2.0.2...HEAD
+[unreleased]: https://github.com/wp-pay-extensions/appthemes/compare/2.0.3...HEAD
+[2.0.3]: https://github.com/wp-pay-extensions/appthemes/compare/2.0.2...2.0.3
 [2.0.2]: https://github.com/wp-pay-extensions/appthemes/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/wp-pay-extensions/appthemes/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/wp-pay-extensions/appthemes/compare/1.0.5...2.0.0

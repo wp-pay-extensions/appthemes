@@ -29,8 +29,6 @@
 
 		<exclude name="WordPress.VIP.RestrictedFunctions.wp_redirect" />
 
-		<exclude name="WordPress.XSS.EscapeOutput" />
-
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
 
