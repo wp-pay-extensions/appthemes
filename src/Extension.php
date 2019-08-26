@@ -8,7 +8,7 @@ use Pronamic\WordPress\Pay\Payments\Payment;
 /**
  * Title: AppThemes iDEAL Add-On
  * Description:
- * Copyright: Copyright (c) 2005 - 2018
+ * Copyright: 2005-2019 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma
@@ -86,8 +86,8 @@ class Extension {
 	/**
 	 * Update lead status of the specified payment
 	 *
-	 * @param Payment $payment
-	 * @param bool    $can_redirect
+	 * @param Payment $payment      Payment.
+	 * @param bool    $can_redirect Whether or not to redirect.
 	 */
 	public static function status_update( Payment $payment, $can_redirect = false ) {
 		if ( self::SLUG !== $payment->get_source() ) {

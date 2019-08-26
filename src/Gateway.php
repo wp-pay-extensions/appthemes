@@ -10,7 +10,7 @@ use Pronamic\WordPress\Pay\Plugin;
 /**
  * Title: AppThemes Pronamic Gateway
  * Description:
- * Copyright: Copyright (c) 2005 - 2018
+ * Copyright: 2005-2019 Pronamic
  * Company: Pronamic
  *
  * @author  Remco Tolsma
@@ -117,7 +117,8 @@ class Gateway extends APP_Gateway {
 
 				$gateway->set_payment_method( $this->payment_method );
 
-				echo $gateway->get_input_html(); // WPCS: xss ok.
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo $gateway->get_input_html();
 
 				?>
 
