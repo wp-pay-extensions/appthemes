@@ -99,16 +99,12 @@ class Gateway extends APP_Gateway {
 		$data = new PaymentData( $order );
 
 		if ( filter_has_var( INPUT_POST, 'appthemes_' . $this->id ) ) {
-			$payment = Plugin::start( $config_id, $gateway, $data, $this->payment_method );
+			try {
+				$payment = Plugin::start( $config_id, $gateway, $data, $this->payment_method );
 
-			$error = $gateway->get_error();
-
-			if ( is_wp_error( $error ) ) {
-				foreach ( $error->get_error_messages() as $message ) {
-					echo esc_html( $message );
-				}
-			} else {
 				$gateway->redirect( $payment );
+			} catch ( \Pronamic\WordPress\Pay\PayException $e ) {
+				$e->render();
 			}
 		} else {
 			?>
