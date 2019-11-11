@@ -103,8 +103,8 @@ class Gateway extends APP_Gateway {
 				$payment = Plugin::start( $config_id, $gateway, $data, $this->payment_method );
 
 				$gateway->redirect( $payment );
-			} catch ( \Pronamic\WordPress\Pay\PayException $e ) {
-				$e->render();
+			} catch ( \Exception $e ) {
+				Plugin::render_exception( $e );
 			}
 		} else {
 			?>
