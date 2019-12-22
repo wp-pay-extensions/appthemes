@@ -14,7 +14,7 @@ use Pronamic\WordPress\Pay\Plugin;
  * Company: Pronamic
  *
  * @author  Remco Tolsma
- * @version 2.0.1
+ * @version 2.0.4
  * @since   1.0.0
  */
 class Gateway extends APP_Gateway {
@@ -99,16 +99,12 @@ class Gateway extends APP_Gateway {
 		$data = new PaymentData( $order );
 
 		if ( filter_has_var( INPUT_POST, 'appthemes_' . $this->id ) ) {
-			$payment = Plugin::start( $config_id, $gateway, $data, $this->payment_method );
+			try {
+				$payment = Plugin::start( $config_id, $gateway, $data, $this->payment_method );
 
-			$error = $gateway->get_error();
-
-			if ( is_wp_error( $error ) ) {
-				foreach ( $error->get_error_messages() as $message ) {
-					echo esc_html( $message );
-				}
-			} else {
 				$gateway->redirect( $payment );
+			} catch ( \Exception $e ) {
+				Plugin::render_exception( $e );
 			}
 		} else {
 			?>

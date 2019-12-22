@@ -1,6 +1,6 @@
 {
   "name": "appthemes",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "AppThemes driver for the WordPress payment processing library.",
   "repository": {
     "type": "git",

@@ -2,7 +2,7 @@
 
 namespace Pronamic\WordPress\Pay\Extensions\AppThemes;
 
-use Pronamic\WordPress\Pay\Core\Statuses;
+use Pronamic\WordPress\Pay\Payments\PaymentStatus;
 use Pronamic\WordPress\Pay\Payments\Payment;
 
 /**
@@ -12,7 +12,7 @@ use Pronamic\WordPress\Pay\Payments\Payment;
  * Company: Pronamic
  *
  * @author  Remco Tolsma
- * @version 2.0.0
+ * @version 2.0.4
  * @since   1.0.0
  */
 class Extension {
@@ -103,31 +103,31 @@ class Extension {
 		$url = $data->get_normal_return_url();
 
 		switch ( $payment->status ) {
-			case Statuses::CANCELLED:
+			case PaymentStatus::CANCELLED:
 				$order->failed();
 
 				$url = $data->get_cancel_url();
 
 				break;
-			case Statuses::EXPIRED:
+			case PaymentStatus::EXPIRED:
 				$order->failed();
 
 				$url = $data->get_error_url();
 
 				break;
-			case Statuses::FAILURE:
+			case PaymentStatus::FAILURE:
 				$order->failed();
 
 				$url = $data->get_error_url();
 
 				break;
-			case Statuses::SUCCESS:
+			case PaymentStatus::SUCCESS:
 				$order->complete();
 
 				$url = $data->get_success_url();
 
 				break;
-			case Statuses::OPEN:
+			case PaymentStatus::OPEN:
 				$order->pending();
 
 				break;
