@@ -1,7 +1,7 @@
 {
   "name": "appthemes",
-  "version": "2.0.4",
-  "description": "AppThemes driver for the WordPress payment processing library.",
+  "version": "2.0.5",
+  "description": "✗ [DEPRECATED] AppThemes driver for the WordPress payment processing library.",
   "repository": {
     "type": "git",
     "url": "https://github.com/wp-pay-extensions/appthemes"

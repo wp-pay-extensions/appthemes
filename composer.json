@@ -1,7 +1,7 @@
 {
 	"name": "wp-pay-extensions/appthemes",
-	"description": "AppThemes driver for the WordPress payment processing library.",
-	"keywords": ["wordpress", "wp", "pay", "appthemes", "extension", "pronamic"],
+	"description": "✗ [DEPRECATED] AppThemes driver for the WordPress payment processing library.",
+	"keywords": ["wordpress", "wp", "pay", "appthemes", "extension", "pronamic", "deprecated"],
 	"homepage": "http://www.wp-pay.org/extensions/appthemes/",
 	"license": "GPL-3.0-or-later",
 	"authors": [

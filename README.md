@@ -1,4 +1,4 @@
-# WordPress Pay Extension: AppThemes
+# [DEPRECATED] WordPress Pay Extension: AppThemes
 
 **AppThemes driver for the WordPress payment processing library.**
 
